@@ -43,7 +43,7 @@ def press_b3():
         arquivo.close()
 
         tkMessageBox.showinfo("OK!", "O contato " + nome + " foi removido com sucesso!")
-    else: tkMessageBox.showinfo("OK!", "O contato " + nome + " não foi localizado!")
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi localizado!")
 def press_b4():
     b3['text']='Buscar contato'
     nome = tkSimpleDialog.askstring('Nome','Nome do contato a ser pesquisado?')
@@ -54,7 +54,7 @@ def press_b4():
             nome = linha;
             tkMessageBox.showinfo("OK!", nome)
             break
-    else: tkMessageBox.showinfo("OK!", "O contato " + nome + " não foi localizado!")
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi localizado!")
     arquivo.close()
 def press_b5():
     b3['text']='Atualizar contato'
@@ -86,7 +86,7 @@ def press_b5():
         arquivo.write("Nome: "+nome.encode('utf8')+"    Telefone: "+telefone+"\n")
         arquivo.close()
         tkMessageBox.showinfo("OK!", "O contato " + nome + " foi atualizado com sucesso!")
-    else: tkMessageBox.showinfo("OK!", "O contato " + nome + " não foi encontrado!")
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi encontrado!")
 #Este trecho foi utilizado para maximizar a tela. Veja '-zoomed',1
 root = Tk()
 root.wm_attributes('-zoomed',1)
@@ -125,12 +125,14 @@ sb.configure(command=quadro.yview)
 quadro.configure(yscrollcommand=sb.set)
 #Ler o arquivo e inserir no listbox
 try:
-    arquivo = open("agenda.txt")
-    for linha in arquivo:
-        quadro.insert(END,linha)
-    arquivo.close()
+
+    if open("agenda.txt"):
+        arquivo = open("agenda.txt", "r")
+        for linha in arquivo:
+            quadro.insert(END,linha)
+    else:
+        arquivo = open("agenda.txt", "w")
+        arquivo.close()
 except:
     print('File cannot be opened: agenda')
-
-
 mainloop()
