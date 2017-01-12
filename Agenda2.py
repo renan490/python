@@ -86,8 +86,9 @@ def press_b5():
         arquivo.write("Nome: "+nome.encode('utf8')+"    Telefone: "+telefone+"\n")
         arquivo.close()
         tkMessageBox.showinfo("OK!", "O contato " + nome + " foi atualizado com sucesso!")
-    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi localizado!")
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi encontrado!")
 #Este trecho foi utilizado para maximizar a tela. Veja '-zoomed',1
+
 frame = Frame()
 frame.pack()
 
@@ -120,12 +121,14 @@ sb.configure(command=quadro.yview)
 quadro.configure(yscrollcommand=sb.set)
 #Ler o arquivo e inserir no listbox
 try:
-    arquivo = open("agenda.txt")
-    for linha in arquivo:
-        quadro.insert(END,linha)
-    arquivo.close()
+
+    if open("agenda.txt"):
+        arquivo = open("agenda.txt", "r")
+        for linha in arquivo:
+            quadro.insert(END,linha)
+    else:
+        arquivo = open("agenda.txt", "w")
+        arquivo.close()
 except:
     print('File cannot be opened: agenda')
-
-
 mainloop()
