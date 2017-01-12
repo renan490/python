@@ -25,21 +25,25 @@ def press_b3():
     Linhas = arquivo.readlines()
     arquivo.close()
     arquivo = open('agenda.txt', 'w')
+    teste = 0
     for linha in Linhas:
         if nome in linha:
+            teste=1
             pass
         else:arquivo.write(linha)
     arquivo.close()
-    quadro.delete(0, END)
-    try:
-        arquivo = open("agenda.txt","r")
-        for linha in arquivo:
-            quadro.insert(END,linha)
-    except:
-        print('File cannot be opened: agenda')
-    arquivo.close()
+    if teste==1:
+        quadro.delete(0, END)
+        try:
+            arquivo = open("agenda.txt","r")
+            for linha in arquivo:
+                quadro.insert(END,linha)
+        except:
+            print('File cannot be opened: agenda')
+        arquivo.close()
 
-    tkMessageBox.showinfo("OK!", "O contato " + nome + " foi removido com sucesso!")
+        tkMessageBox.showinfo("OK!", "O contato " + nome + " foi removido com sucesso!")
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi localizado!")
 def press_b4():
     b3['text']='Buscar contato'
     nome = tkSimpleDialog.askstring('Nome','Nome do contato a ser pesquisado?')
@@ -47,9 +51,11 @@ def press_b4():
     Linhas = arquivo.readlines()
     for linha in Linhas:
         if nome in linha:
-            nome = linha;break
+            nome = linha;
+            tkMessageBox.showinfo("OK!", nome)
+            break
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi localizado!")
     arquivo.close()
-    tkMessageBox.showinfo("OK!", nome)
 def press_b5():
     b3['text']='Atualizar contato'
     nome = tkSimpleDialog.askstring('Nome','Nome do contato a ser atualizado?')
@@ -57,27 +63,31 @@ def press_b5():
     Linhas = arquivo.readlines()
     arquivo.close()
     arquivo = open('agenda.txt', 'w')
+    teste = 0
     for linha in Linhas:
         if nome in linha:
             pass
+            teste = 1
         else:arquivo.write(linha)
     arquivo.close()
-    quadro.delete(0, END)
-    try:
-        arquivo = open("agenda.txt","r")
-        for linha in arquivo:
-            quadro.insert(END,linha)
-    except:
-        print('File cannot be opened: agenda')
-    arquivo.close()
-    nome = tkSimpleDialog.askstring('Nome','Nome do novo contato?')
-    telefone = tkSimpleDialog.askstring('Telefone','Telefone do novo contato?')
-    quadro.insert(END,"Nome: "+nome+"    Telefone: "+telefone)
-    arquivo = open('agenda.txt', 'a')
-    arquivo.write("Nome: "+nome.encode('utf8')+"    Telefone: "+telefone+"\n")
-    arquivo.close()
-    tkMessageBox.showinfo("OK!", "O contato " + nome + " foi atualizado com sucesso!")
-#Criando o frame
+    if teste == 1:
+        quadro.delete(0, END)
+        try:
+            arquivo = open("agenda.txt","r")
+            for linha in arquivo:
+                quadro.insert(END,linha)
+        except:
+            print('File cannot be opened: agenda')
+        arquivo.close()
+        nome = tkSimpleDialog.askstring('Nome','Nome do novo contato?')
+        telefone = tkSimpleDialog.askstring('Telefone','Telefone do novo contato?')
+        quadro.insert(END,"Nome: "+nome+"    Telefone: "+telefone)
+        arquivo = open('agenda.txt', 'a')
+        arquivo.write("Nome: "+nome.encode('utf8')+"    Telefone: "+telefone+"\n")
+        arquivo.close()
+        tkMessageBox.showinfo("OK!", "O contato " + nome + " foi atualizado com sucesso!")
+    else: tkMessageBox.showinfo("Que pena!", "O contato " + nome + " não foi localizado!")
+#Este trecho foi utilizado para maximizar a tela. Veja '-zoomed',1
 frame = Frame()
 frame.pack()
 
