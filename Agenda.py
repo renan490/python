@@ -54,7 +54,7 @@ def press_b4():
             nome = linha;
             tkMessageBox.showinfo("OK!", nome)
             break
-    else: tkMessageBox.showinfo("Que pena!", "Contato não localizado!")
+    else: tkMessageBox.showinfo("OK!", "O contato " + nome + " não foi localizado!")
     arquivo.close()
 def press_b5():
     b3['text']='Atualizar contato'
