@@ -123,8 +123,9 @@ try:
     arquivo = open("agenda.txt")
     for linha in arquivo:
         quadro.insert(END,linha)
+    arquivo.close()
 except:
     print('File cannot be opened: agenda')
-arquivo.close()
+
 
 mainloop()
