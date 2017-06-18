@@ -15,8 +15,8 @@ https://drive.google.com/open?id=0B25h0JK8Ops6cDlTUTFRX2hhREk <br>
 Zetcode <br>
 http://zetcode.com/gui/pyqt5/ <br>
 http://zetcode.com/gui/pyqt4/ <br>
-http://zetcode.com/gui/wxwidgets/ <br>
 http://zetcode.com/wxpython/ <br>
+http://zetcode.com/gui/tkinter/ <br>
 http://zetcode.com/db/sqlitepythontutorial/ <br>
 http://zetcode.com/lang/python/ <br>
 http://zetcode.com/articles/openpyxl/ <br>
