@@ -34,3 +34,8 @@ http://www.w3ii.com/pt/numpy/default.html <br>
 http://www.w3ii.com/pt/cherrypy/default.html <br>
 http://www.w3ii.com/pt/web2py/default.html <br>
 http://www.w3ii.com/pt/scrapy/default.html <br>
+
+Playlists do youtube
+https://www.youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6 - Curso em Vídeo - Exercícios de Python
+https://www.youtube.com/playlist?list=PLHz_AreHm4dm6wYOIW20Nyg12TAjmMGT- - Curso em Vídeos - Python3
+https://www.youtube.com/playlist?list=PLesCEcYj003QxPQ4vTXkt22-E11aQvoVj - Excript - Curso de Python
